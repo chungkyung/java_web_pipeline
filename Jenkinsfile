@@ -4,25 +4,26 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                bat './mvnw clean'
+                bat 'mvnw.cmd clean'
             }
         }
         stage('Compile') {
             steps {
-                bat './mvnw compile'
+                bat 'mvnw.cmd compile'
             }
         }
         stage('Test') {
             steps {
-                bat './mvnw test site'
+                bat 'mvnw.cmd test site'
             }
         }
         stage('Package') {
             steps {
-                bat './mvnw package'
+                bat 'mvnw.cmd package'
             }
         }
     }
+
     post {
         failure {
             echo "❌ 빌드 실패! Jenkins 콘솔 로그를 확인하세요."

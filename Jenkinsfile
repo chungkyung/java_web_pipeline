@@ -4,22 +4,22 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                bat './mvnw clean'
+                bat 'C:\\Windows\\System32\\cmd.exe /c mvnw clean'
             }
         }
         stage('Compile') {
             steps {
-                bat './mvnw compile'
+                bat 'C:\\Windows\\System32\\cmd.exe /c mvnw compile'
             }
         }
         stage('Test') {
             steps {
-                bat './mvnw test site'
+                bat 'C:\\Windows\\System32\\cmd.exe /c mvnw test'
             }
         }
         stage('Package') {
             steps {
-                bat './mvnw package'
+                bat 'C:\\Windows\\System32\\cmd.exe /c mvnw package'
             }
         }
     }

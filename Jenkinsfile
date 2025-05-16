@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat './mvnw test'
+                bat './mvnw test site'
             }
         }
         stage('Package') {

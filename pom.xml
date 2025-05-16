@@ -52,7 +52,20 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			    <!-- Surefire Plugin: JUnit XML 리포트 출력 (기본) -->
+    			<plugin>
+      				<groupId>org.apache.maven.plugins</groupId>
+      				<artifactId>maven-surefire-plugin</artifactId>
+      				<version>3.0.0-M9</version>
+    			</plugin>
+    			<!-- Surefire Report Plugin: HTML 리포트 출력용 (추가) -->
+    			<plugin>
+      				<groupId>org.apache.maven.plugins</groupId>
+      				<artifactId>maven-surefire-report-plugin</artifactId>
+      				<version>3.0.0-M9</version>
+    			</plugin>
 		</plugins>
+
 	</build>
 
 </project>

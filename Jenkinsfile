@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Run') {
-            steps {
-                bat 'java -jar target/javaweb-0.0.1-SNAPSHOT.jar --server.port=8081'
-            }
-        }
         stage('Clean') {
             steps {
                 bat './mvnw clean'

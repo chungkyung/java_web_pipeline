@@ -4,22 +4,22 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                bat 'mvnw.cmd clean'
+                bat './mvnw clean'
             }
         }
         stage('Compile') {
             steps {
-                bat 'mvnw.cmd compile'
+                bat './mvnw compile'
             }
         }
         stage('Test') {
             steps {
-                bat 'mvnw.cmd test site'
+                bat './mvnw test site'
             }
         }
         stage('Package') {
             steps {
-                bat 'mvnw.cmd package'
+                bat './mvnw package'
             }
         }
     }

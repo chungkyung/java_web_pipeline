@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                bat './mvnw clean'
+                bat './mvnw.cmd clean'
             }
         }
         stage('Compile') {

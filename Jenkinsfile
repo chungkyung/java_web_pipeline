@@ -17,12 +17,12 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                bat 'mvn clean compile'
-            }
+    stage('Build') {
+        steps {
+            echo '🔨 빌드 시작...'
+            bat 'mvn clean compile'
         }
-
+    }
         stage('Test') {
             steps {
                 bat 'mvn test'
@@ -44,15 +44,17 @@ pipeline {
             }
         }
     }
-
+    post {
+        failure {
+            echo "❌ 실패 발생! 단계별 로그를 확인해주세요."
+            mail to: 'team@example.com',
+                 subject: "🔴 실패 - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "자세한 로그: ${env.BUILD_URL}"
+        }
+    }
     post {
         always {
             junit 'target/surefire-reports/*.xml'
-        }
-        failure {
-            mail to: 'devteam@example.com',
-                 subject: "❌ Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: "Check Jenkins: ${env.BUILD_URL}"
         }
     }
 }

@@ -4,22 +4,22 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                bat 'C:\\Windows\\System32\\cmd.exe /c .\\mvnw clean'
+                bat '.\\mvnw.cmd clean'
             }
         }
         stage('Compile') {
             steps {
-                bat 'C:\\Windows\\System32\\cmd.exe /c .\\mvnw compile'
+                bat '.\\mvnw.cmd compile'
             }
         }
         stage('Test') {
             steps {
-                bat 'C:\\Windows\\System32\\cmd.exe /c .\\mvnw test'
+                bat '.\\mvnw.cmd test'
             }
         }
         stage('Package') {
             steps {
-                bat 'C:\\Windows\\System32\\cmd.exe /c .\\mvnw package'
+                bat '.\\mvnw.cmd package'
             }
         }
     }
@@ -29,11 +29,7 @@ pipeline {
         }
         success {
             echo "✅ 모든 단계 성공!"
-            
-            // ✅ JUnit XML 테스트 결과 리포트 수집
             junit '**/target/surefire-reports/*.xml'
-
-            // ✅ HTML 리포트 아카이빙
             archiveArtifacts artifacts: 'target/site/surefire-report.html', fingerprint: true
         }
     }

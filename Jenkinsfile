@@ -20,7 +20,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/chungkyung/java_web_pipeline.git'
             }
         }
-
         stage('Build') 
         {
             steps {
@@ -49,7 +48,7 @@ pipeline {
         stage('Generate HTML Report') {
             steps {
                 echo '📄 HTML 테스트 리포트 생성'
-                bat 'mvnw.cmd surefire-report:report'
+                bat 'mvnw.cmd site'
                 archiveArtifacts artifacts: 'target/site/surefire-report.html', fingerprint: true
             }
         }

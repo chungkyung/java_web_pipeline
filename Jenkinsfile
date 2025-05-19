@@ -31,7 +31,7 @@ pipeline {
             steps {
                 // 실행 중인 Spring Boot 프로세스를 먼저 종료 (충돌 방지)
                 // 새 콘솔에서 Spring Boot 앱을 비동기 실행 → Jenkins Job 종료됨
-                bat 'start java -jar target/javaweb-0.0.1-SNAPSHOT.jar --server.port=8081'
+                 bat 'java -jar target/javaweb-0.0.1-SNAPSHOT.jar --server.port=8081'
             }
         }
     }

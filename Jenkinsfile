@@ -30,9 +30,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 // 실행 중인 Spring Boot 프로세스를 먼저 종료 (충돌 방지)
-                taskkill /F /IM java.exe > NUL 2>&1
                 // 새 콘솔에서 Spring Boot 앱을 비동기 실행 → Jenkins Job 종료됨
-                start java -jar target/javaweb-0.0.1-SNAPSHOT.jar --server.port=8081
+                bat """
+                    taskkill /F /IM java.exe > NUL 2>&1
+                    start java -jar target/javaweb-0.0.1-SNAPSHOT.jar --server.port=8081
+                """
             }
         }
     }

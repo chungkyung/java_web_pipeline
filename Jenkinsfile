@@ -71,7 +71,7 @@ pipeline {
             steps {
                 /*scp: EC2에 .jar 파일 복사
                 ssh: EC2에 접속해서 systemctl restart 명령 실행
-                결과적으로 EC2에서 웹 앱이 자동 재시작됨*/
+                결과적으로 EC2에서 웹 앱이 자동 재시작됨 */
                 echo '🚀 EC2로 배포 시작'
                 bat '"C:\\Program Files\\Git\\usr\\bin\\scp.exe" -o StrictHostKeyChecking=no -i C:/Users/User/.ssh/ec2-key_V2.pem target/javaweb-0.0.1-SNAPSHOT.jar ubuntu@3.27.222.58:/home/ubuntu/app/'
                 bat '"C:\\Program Files\\Git\\usr\\bin\\ssh.exe" -o StrictHostKeyChecking=no -i C:/Users/User/.ssh/ec2-key_V2.pem ubuntu@3.27.222.58 sudo systemctl restart javaweb'

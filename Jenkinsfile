@@ -56,6 +56,7 @@ pipeline {
 
                 // 2. EC2에서 Spring Boot 재시작 2
                 bat '"C:\\Program Files\\Git\\usr\\bin\\ssh.exe" -o StrictHostKeyChecking=no -i C:/Users/User/.ssh/ec2-key_V2.pem ubuntu@3.27.222.58 sudo systemctl restart javaweb'
+            }
 
         }
         /*

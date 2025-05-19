@@ -73,8 +73,6 @@ pipeline {
         }
         success {
             echo "✅ 모든 단계 성공!"
-            junit '**/target/surefire-reports/*.xml'
-            archiveArtifacts artifacts: 'target/site/surefire-report.html', fingerprint: true
         }
     }
 }

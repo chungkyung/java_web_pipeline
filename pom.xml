@@ -56,21 +56,26 @@
 		</plugins>
 
 	</build>
-	<reporting>  <!-- ✅ 새로 추가 -->
-   	 	<plugins>
-			<!-- Surefire Plugin: JUnit XML 리포트 출력 (기본) -->
-    			<plugin>
+	<reporting>
+		<plugins>
+			<!-- 기존 리포트 플러그인 유지 -->
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M9</version>
 			</plugin>
-			<!-- Surefire Report Plugin: HTML 리포트 출력용 (추가) -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
 				<version>3.0.0-M9</version>
 			</plugin>
+
+			<!-- 🆕 추가: project-info-reports-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.4.1</version> <!-- 안정 버전 -->
+			</plugin>
 		</plugins>
 	</reporting>
-
 </project>

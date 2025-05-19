@@ -46,6 +46,13 @@ pipeline {
             }
         }
 
+        stage('Generate HTML Report') {
+            steps {
+                echo '📄 HTML 테스트 리포트 생성'
+                bat 'mvnw.cmd surefire-report:report'
+                archiveArtifacts artifacts: 'target/site/surefire-report.html', fingerprint: true
+            }
+        }
         stage('Deploy to EC2') 
         {
             steps {
@@ -59,57 +66,6 @@ pipeline {
             }
 
         }
-        /*
-        stage('Build') 
-        {
-            steps 
-            {
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('Test') 
-        {
-            steps 
-            {
-                sh 'mvn test'
-            }
-        }
-        */
-        /* 초보자 버전
-        stage('Clean') {
-            steps {
-                bat 'mvnw.cmd clean'
-            }
-        }
-        stage('Compile') {
-            steps {
-                bat 'mvnw.cmd compile'
-            }
-        }
-        stage('Test') {
-            steps {
-                bat 'mvnw.cmd test site'
-            }
-        }
-        stage('Package') {
-            steps {
-                bat 'mvnw.cmd package'
-            }
-        }
-        stage('Build') {
-            steps {
-                bat './mvnw clean package'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                // 실행 중인 Spring Boot 프로세스를 먼저 종료 (충돌 방지)
-                // 새 콘솔에서 Spring Boot 앱을 비동기 실행 → Jenkins Job 종료됨
-                 bat 'java -jar target/javaweb-0.0.1-SNAPSHOT.jar --server.port=8081'
-            }
-        }
-        */
     }
 
     post {

@@ -55,7 +55,7 @@
 
 		</plugins>
 
-	</build>
+	</build>   
 	<reporting>
 		<plugins>
 			<!-- 기존 리포트 플러그인 유지 -->

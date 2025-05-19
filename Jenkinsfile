@@ -51,10 +51,12 @@ pipeline {
             steps {
                 echo '🚀 EC2로 배포 시작'
                 // 1. .jar 파일 EC2로 전송
-                bat '"C:\\Program Files\\Git\\usr\\bin\\scp.exe" -i C:/Users/User/.ssh/ec2-key_V2.pem target/javaweb-0.0.1-SNAPSHOT.jar ubuntu@3.27.222.58:/home/ubuntu/app/'
+                bat '"C:\\Program Files\\Git\\usr\\bin\\scp.exe" -o StrictHostKeyChecking=no -i C:/Users/User/.ssh/ec2-key_V2.pem target/javaweb-0.0.1-SNAPSHOT.jar ubuntu@3.27.222.58:/home/ubuntu/app/'
+
 
                 // 2. EC2에서 Spring Boot 재시작 2
-                bat '"C:\\Program Files\\Git\\usr\\bin\\ssh.exe" -i C:/Users/User/.ssh/ec2-key_V2.pem ubuntu@3.27.222.58 sudo systemctl restart javaweb'           }
+                bat '"C:\\Program Files\\Git\\usr\\bin\\ssh.exe" -o StrictHostKeyChecking=no -i C:/Users/User/.ssh/ec2-key_V2.pem ubuntu@3.27.222.58 sudo systemctl restart javaweb'
+
         }
         /*
         stage('Build') 

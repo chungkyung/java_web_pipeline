@@ -50,9 +50,11 @@ pipeline {
         {
             steps {
                 echo '🚀 EC2로 배포 시작'
-                bat "scp -i ${env.PEM_PATH} target/${env.JAR_NAME} ${env.EC2_USER}@${env.EC2_HOST}:${env.EC2_PATH}/"
-                bat "ssh -i ${env.PEM_PATH} ${env.EC2_USER}@${env.EC2_HOST} 'sudo systemctl restart javaweb'"
-            }
+                // 1. .jar 파일 EC2로 전송
+                bat '"C:\\Program Files\\Git\\usr\\bin\\scp.exe" -i C:/Users/User/.ssh/ec2-key_V2.pem target/javaweb-0.0.1-SNAPSHOT.jar ubuntu@3.27.222.58:/home/ubuntu/app/'
+
+                // 2. EC2에서 Spring Boot 재시작
+                bat '"C:\\Program Files\\Git\\usr\\bin\\ssh.exe" -i C:/Users/User/.ssh/ec2-key_V2.pem ubuntu@3.27.222.58 sudo systemctl restart javaweb'           }
         }
         /*
         stage('Build') 

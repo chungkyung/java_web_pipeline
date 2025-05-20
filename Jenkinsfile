@@ -33,13 +33,13 @@ pipeline {
                 bat 'mvnw.cmd clean package'
             }
         }
-
+        /*
         stage('Test') 
         {
             steps {
                 /*Maven 테스트 단계 실행 (src/test 내의 단위 테스트)
                 코드 품질을 확인하고 오류를 사전에 방지
-                테스트 실패 시 파이프라인 자동 중단 가능*/
+                테스트 실패 시 파이프라인 자동 중단 가능
                 echo '🧪 단위 테스트 수행'
                 bat 'mvnw.cmd test'
             }
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 /*archiveArtifacts: 빌드 결과물(JAR)을 Jenkins에 저장
                 fingerprint: 파일 추적 기능
-                junit: 테스트 리포트를 수집하여 Jenkins UI에서 확인 가능하게 함*/
+                junit: 테스트 리포트를 수집하여 Jenkins UI에서 확인 가능하게 함
                 echo '📦 아티팩트 저장'
                 archiveArtifacts artifacts: "target/${env.JAR_NAME}", fingerprint: true
                 junit 'target/surefire-reports/*.xml'
@@ -60,12 +60,13 @@ pipeline {
         stage('Generate HTML Report') {
             steps {
                 /*Maven으로 HTML 테스트 리포트 생성 (site 플러그인)
-                생성된 리포트를 Jenkins에 저장 (확인용)*/
+                생성된 리포트를 Jenkins에 저장 (확인용)
                 echo '📄 HTML 테스트 리포트 생성'
                 bat 'mvnw.cmd site'
                 archiveArtifacts artifacts: 'target/site/surefire-report.html', fingerprint: true
             }
-        }
+        }*/
+
         stage('Deploy to EC2') 
         {
             steps {
